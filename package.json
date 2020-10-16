@@ -1,0 +1,43 @@
+{
+  "name": "notion",
+  "private": true,
+  "description": "Fast and accurate React renderer for Notion. TS batteries included.",
+  "repository": "NotionX/react-notion-x",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
+  "workspaces": [
+    "packages/*",
+    "example/"
+  ],
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "start": "tsc --build tsconfig.json --watch",
+    "prebuild": "run-s clean",
+    "prestart": "run-s clean",
+    "clean": "del packages/*/build",
+    "dev": "run-s start",
+    "pretest": "run-s build",
+    "test": "run-s test:*",
+    "test:unit": "lerna run test",
+    "test:prettier": "prettier '**/*.ts' --check",
+    "docs": "run-s docs:extract docs:generate",
+    "docs:extract": "lerna exec api-extractor run",
+    "docs:generate": "api-documenter markdown -i build -o docs",
+    "bootstrap": "lerna bootstrap",
+    "publish": "lerna publish",
+    "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') < 0) throw new Error('this package requires yarn for development')\"",
+    "postinstall": "run-s bootstrap"
+  },
+  "devDependencies": {
+    "@microsoft/api-documenter": "^7.8.28",
+    "@microsoft/api-extractor": "7.8.2-pr1796.0",
+    "del-cli": "^3.0.1",
+    "lerna": "^3.22.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3"
+  }
+}
