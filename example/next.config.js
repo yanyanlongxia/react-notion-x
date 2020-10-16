@@ -12,6 +12,7 @@ module.exports = withBundleAnalyzer({
         destination: '/79b255e9f2074c9691e88e40dc79f054',
         permanent: true
       }
+
     ]
   }
 })
