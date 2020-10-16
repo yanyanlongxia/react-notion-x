@@ -52,7 +52,7 @@ export default function NotionPage({ recordMap }) {
   return (
     <>
       <Head>
-        <meta name='description' content='React Notion X demo renderer.' />
+        <meta name='description' content='炎炎龙虾的个人主页' />
         <title>{title}</title>
       </Head>
 
